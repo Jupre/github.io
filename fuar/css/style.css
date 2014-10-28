@@ -79,6 +79,47 @@ textarea, input { outline: none; }
 	box-shadow: none;
 	overflow: hidden;
 }	
+	/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+.flip-container, .front, .back {
+	width: 300px;
+	height: 77px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
 
 #email input {
 	padding: 15px 110px 15px 20px;
@@ -113,7 +154,7 @@ textarea, input { outline: none; }
 	-khtml-opacity: 0.5;
 }
 
-#email button:hover  {
+#setcrms input:hover  {
 	opacity: .85;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=85);
 	-moz-opacity: 0.85;
@@ -147,7 +188,8 @@ textarea, input { outline: none; }
 @media screen and (min-width: 768px){
 	#errorpage #header{border-bottom:none;box-shadow:0px 1px 3px rgba(0,0,0,0.25)}
 	#errorpage #parallax_wrapper{width:1920px;min-height:100%;position:relative;margin-left:-960px}
-	#errorpage #content{width:1080px;margin:0 auto;color:#fff;text-align:left;z-index:2;position:fixed;top:45%;left:35%;margin:-385px -300px 0}
+	#errorpage #content{width:1080px;margin:0 auto;color:#fff;text-align:left;z-index:2;position:absolute;top:45%;left:35%;margin:-385px -300px 0;display:block}
+	#errorpage #content #setmaya{position:relative}
 	#errorpage #content .button{margin-top:35px;cursor:pointer;position:relative;z-index:99999;}
 	#errorpage #content h1{font-color:#fff;font-family:"MuseoSans-700",Helvetica,Arial,Verdana,sans-serif;font-size:55px;font-weight:normal;line-height:65px;text-shadow:0px 1px 3px rgba(0,0,0,0.45)}
 	#errorpage #content p{font-family:HelveticaNeue,Arial,Verdana,sans-serif;font-size:18px;font-weight:normal;width:512px;margin:0 auto;line-height:26px;text-shadow:0px 1px 3px rgba(0,0,0,0.45)}
