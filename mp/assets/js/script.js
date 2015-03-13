@@ -128,8 +128,8 @@ function getTags(file,done){
 
 		var tags = ID3.getAllTags(file.name);
 
-		result.artist = tags.artist || "Unknown Artist";
-		result.title = tags.title || "Unknown";
+		result.artist = tags.artist || "Bilinmeyen Sanatçı";
+		result.title = tags.title || "Bilinmeyen";
 		result.album = tags.album || "";
 		if(tags.picture && tags.picture.data && tags.picture.data.length) {
 			result.picture = tags.picture;
@@ -396,12 +396,12 @@ $('#shuffle-button').on('click', function(){
 
 	if(that.hasClass('active')){
 		that.removeClass('active');
-		that.attr('title', 'Shuffle Off');
+		that.attr('title', 'Karıştır Kapa');
 		shuffle = false;
 	}
 	else{
 		that.addClass('active');
-		that.attr('title', 'Shuffle On');
+		that.attr('title', 'Karıştır Aç');
 		shuffle = true;
 	}
 });
@@ -415,20 +415,20 @@ $('#repeat-button').on('click', function(){
 
 	if(repeat==0){
 		that.addClass('active');
-		that.attr('title', 'Repeat All');
+		that.attr('title', 'Hepsini Yinele');
 		repeat = 1;
 	}
 
 	else if(repeat==1){
 		that.find('span').show();
-		that.attr('title', 'Repeat Current');
+		that.attr('title', 'Şimdikini Yinele');
 		repeat = 2;
 	}
 
 	else if(repeat==2){
 		that.find('span').hide();
 		that.removeClass('active');
-		that.attr('title', 'Repeat Off');
+		that.attr('title', 'Yinele Kapa');
 		repeat = 0;
 	}
 
@@ -445,11 +445,11 @@ $('#track-details').on('click', function () {
 
 	if(expandBar.hasClass('hidden')){
 		expandBar.removeClass('hidden');
-		$(this).attr('title', 'Hide Playlist');
+		$(this).attr('title', 'Listeyi Kapa');
 	}
 	else{
 		expandBar.addClass('hidden');
-		$(this).attr('title', 'Show Playlist');
+		$(this).attr('title', 'Listeyi Göster');
 	}
 });
 
@@ -535,7 +535,7 @@ $('#playlist').on('click', function (e) {
 					$('#cover-art-big').css("background", "");
 					$('#cover-art-small').attr('src', 'assets/img/default.png');
 					$('#expand-bar').addClass('hidden');
-					$('#track-desc').html('There are no tracks loaded in the player.');
+					$('#track-desc').html('Oynatıcıda yüklü ses dosyası yok.');
 					$('#current').text('-');
 					$('#total').text('-');
 					$('#container').addClass('disabled');
