@@ -238,7 +238,7 @@ wavesurfer.on('ready', function () {
 		$('#cover-art-small').attr('src', playlist[i].picture);
 
 		// Show the artist and title.
-		$('#track-desc').html('<b>' + playlist[i].title + '</b> by ' + playlist[i].artist);
+		$('#track-desc').html('<b>' + playlist[i].title + '</b> - ' + playlist[i].artist);
 
 		// Show duration of track.
 		$('#current').text('0:00');
