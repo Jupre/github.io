@@ -128,8 +128,8 @@ function getTags(file,done){
 
 		var tags = ID3.getAllTags(file.name);
 
-		result.artist = tags.artist || "Bilinmeyen Sanatçı";
-		result.title = tags.title || "Bilinmeyen";
+		result.artist = tags.artist || file.name;
+		result.title = tags.title || "";
 		result.album = tags.album || "";
 		if(tags.picture && tags.picture.data && tags.picture.data.length) {
 			result.picture = tags.picture;
